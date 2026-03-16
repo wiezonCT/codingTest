@@ -1,4 +1,4 @@
-package lab.jh.bakjoon.우선순위큐;
+package lab.jh.bakjoon.우선순위큐.센티와_마법의_뿅망치_19638;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
