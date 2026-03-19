@@ -33,37 +33,17 @@ public class TestRunner {
             System.setOut(originalOut);
             // 시간 체크
             if (timeUsed > testCase.timeLimitMs) {
-                throw new AssertionError(
-                        "시간 제한 초과\n" +
-                                "문제 제한 시간=" + testCase.timeLimitMs + "ms, 실제 시간 =" + timeUsed + "ms"
-                );
+                throw new AssertionError("시간 제한 초과\n" + "문제 제한 시간=" + testCase.timeLimitMs + "ms, 실제 시간 =" + timeUsed + "ms");
             }
 
             // 메모리 체크
             if (memoryUsed > testCase.memoryLimitMb) {
-                throw new AssertionError(
-                        "메모리 제한 초과\n" +
-                                "문제 메모리 제한 =" + testCase.memoryLimitMb + "MB, 실제 메모리 =" + memoryUsed + "MB"
-                );
+                throw new AssertionError("메모리 제한 초과\n" + "문제 메모리 제한 =" + testCase.memoryLimitMb + "MB, 실제 메모리 =" + memoryUsed + "MB");
             }
 
             // 결과 체크
-            Assertions.assertEquals(
-                    testCase.expected.trim(),
-                    result,
-                    "\n[입력값]\n" + testCase.input +
-                            "\n[예상 결과값]\n" + testCase.expected +
-                            "\n[실제 결과값]\n" + result +
-                            "\n[소요 시간] : " + timeUsed + "ms" +
-                            "\n[메모리 사용률] : " + memoryUsed + "MB"
-            );
-
-            System.out.println(
-                    "\n ========= [PASS] =========" +
-                            "\n[입력값] :\n" + testCase.input +
-                            "\n[출력값] :\n" + result +
-                            "\n ========================="
-            );
+            Assertions.assertEquals(testCase.expected.trim(), result, "\n[입력값]\n" + testCase.input + "\n[예상 결과값]\n" + testCase.expected + "\n[실제 결과값]\n" + result + "\n[소요 시간] : " + timeUsed + "ms" + "\n[메모리 사용률] : " + memoryUsed + "MB");
+            System.out.println("\n ========= [PASS] =========" + "\n[입력값] :\n" + testCase.input + "\n[출력값] :\n" + result + "\n =========================");
 
         } finally {
             System.setOut(originalOut);
