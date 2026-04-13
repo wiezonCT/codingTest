@@ -1,11 +1,10 @@
-package lab.wy.programmers.guhyeon;
+package lab.wy.programmers.구현;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Fail {
