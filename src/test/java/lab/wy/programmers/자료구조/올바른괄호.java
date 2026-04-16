@@ -9,7 +9,7 @@ import java.util.Deque;
 public class 올바른괄호 {
 
     @Test
-    void test(){
+    void test() {
         Assertions.assertTrue(solution("(())"));
         Assertions.assertTrue(solution("()"));
         Assertions.assertTrue(solution("()()"));
@@ -17,26 +17,26 @@ public class 올바른괄호 {
     }
 
 
-    private boolean solution(String input){
+    private boolean solution(String input) {
 
         Deque<Character> stack = new ArrayDeque<>();
 
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             char temp = input.charAt(i);
-            if(temp == '('){
+            if (temp == '(') {
                 stack.push(temp);
-            }else{
-                if(stack.isEmpty()){
+            } else {
+                if (stack.isEmpty()) {
                     return false;
-                }else {
+                } else {
                     stack.pop();
                 }
             }
         }
 
-        if(stack.isEmpty()){
+        if (stack.isEmpty()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
