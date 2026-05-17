@@ -4,6 +4,9 @@ package lab.wy.programmers.탐색;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class 네트워크 {
 
     @Test
@@ -21,7 +24,8 @@ public class 네트워크 {
             if (!visited[i]) {
                 // 첫 방문이다
                 count++;
-                dfs(i, n, visited, computers);
+//                dfs(i, n, visited, computers);
+                bfs(i, n, visited, computers);
             }
         }
 
@@ -40,6 +44,27 @@ public class 네트워크 {
             if (i != j && !visited[j] && computers[i][j] == 1) {
                 dfs(j, n, visited, computers);
             }
+        }
+    }
+
+
+
+    private void bfs(int start, int n, boolean[] visited, int[][] computers){
+        Queue<Integer> queue = new ArrayDeque();
+
+        queue.offer(start);
+        visited[start] = true;
+
+        while(!queue.isEmpty()){
+            int current = queue.poll();
+
+            for(int i = 0; i < n; i++){
+                if(current != i && computers[current][i] == 1 && !visited[i]){
+                    queue.offer(i);
+                    visited[i] = true;
+                }
+            }
+
         }
     }
 }
