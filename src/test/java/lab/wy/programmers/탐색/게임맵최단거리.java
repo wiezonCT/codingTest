@@ -24,7 +24,7 @@ public class 게임맵최단거리 {
 
 
     private int solution(int[][] map) {
-        Queue<Integer> queue = new ArrayDeque<>();
+        Queue<int[]> queue = new ArrayDeque<>();
         int[][] visited = new int[map.length][map[0].length];
         int maxRow = map.length;
         int minRow = -1;
@@ -33,19 +33,20 @@ public class 게임맵최단거리 {
 
         int startCol = 0;
         int startRow = 0;
-        queue.offer(startCol);
-        queue.offer(startRow);
+        queue.offer(new int[]{startRow, startCol});
+
         visited[startRow][startCol] = 1;
 
         while (!queue.isEmpty()) {
-            Integer column = queue.poll();
-            Integer row = queue.poll();
+            int[] data = queue.poll();
+            int row = data[0];
+            int column = data[1];
+
 
             // 위
             if (row - 1 > minRow && map[row - 1][column] != 0) {
                 if (visited[row - 1][column] == 0) {
-                    queue.offer(column);
-                    queue.offer(row - 1);
+                    queue.offer(new int[]{row - 1, column});
                     visited[row - 1][column] = visited[row][column] + 1;
                 }
             }
@@ -53,8 +54,7 @@ public class 게임맵최단거리 {
             // 아래
             if (row + 1 < maxRow && map[row + 1][column] != 0) {
                 if (visited[row + 1][column] == 0) {
-                    queue.offer(column);
-                    queue.offer(row + 1);
+                    queue.offer(new int[]{row + 1, column});
                     visited[row + 1][column] = visited[row][column] + 1;
                 }
             }
@@ -62,8 +62,7 @@ public class 게임맵최단거리 {
             // 오른쪽
             if (column + 1 < maxCol && map[row][column + 1] != 0) {
                 if (visited[row][column + 1] == 0) {
-                    queue.offer(column + 1);
-                    queue.offer(row);
+                    queue.offer(new int[]{row, column + 1});
                     visited[row][column + 1] = visited[row][column] + 1;
                 }
             }
@@ -71,8 +70,7 @@ public class 게임맵최단거리 {
             // 왼쪽
             if (column - 1 > minCol && map[row][column - 1] != 0) {
                 if (visited[row][column - 1] == 0) {
-                    queue.offer(column - 1);
-                    queue.offer(row);
+                    queue.offer(new int[]{row, column - 1});
                     visited[row][column - 1] = visited[row][column] + 1;
                 }
             }
